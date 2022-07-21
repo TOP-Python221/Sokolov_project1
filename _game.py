@@ -1,5 +1,10 @@
+# FIXME: документировать модуль
+""""""
+
+# FIXME: в Архитектуре у вас совсем другая структура данных для работы с полями, в виде матрицы — именно её вы должны проверять и именно для неё должны писать код. А здесь у вас плоская структура данных
 test_board = range(1, 10)
 
+# FIXME: аннотировать и документировать функцию
 def draw_board(board):
     print("-------------")
     for i in range(3):
@@ -9,17 +14,22 @@ def draw_board(board):
 draw_board(test_board)
 
 
+# FIXME: аннотировать и документировать функцию
 def take_input(player_token):
     valid = False
     while not valid:
         player_answer = input("Выберите клетку " + player_token + "?")
         try:
             player_answer = int(player_answer)
+        # FIXME: уточните тип исключения
         except:
             print("Вы точно ввели число?")
             continue
+        # FIXME: если не сами не помните, как оформлять код, то хотя бы к PyCharm присматривайтесь — он ерунды не предложит. Alt+Enter на подчёркнутой строке открывает меню с вариантами контекстно-зависимых действий
         if player_answer >= 1 and player_answer <= 9:
             if (str(test_board[player_answer - 1]) not in "XO"):
+                # FIXME: действительно, как вы в объект range присваивать собрались? хоть бы в список преобразовали
+                #        и ещё напоминаю, что этот объект находится в глобальном пространстве имён
                 test_board[player_answer - 1] = player_token
                 valid = True
             else:
@@ -28,6 +38,7 @@ def take_input(player_token):
             print("Некорректный ввод. Введите число от 1 до 9 что бы сделать ход")
 
 
+# FIXME: аннотировать и документировать функцию
 def check_win(board):
     win_coord = ((0, 1, 2), (3, 4, 5), (6, 7, 8), (0, 3, 6),
                  (1, 4, 7), (2, 5, 8), (0, 4, 8), (2, 4, 6))
