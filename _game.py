@@ -1,6 +1,11 @@
-board = range(1, 10)
+
+"""Модуль отрисовки игрового поля, и непосредственно партии игры"""
+
+# FIXME: в Архитектуре у вас совсем другая структура данных для работы с полями, в виде матрицы — именно её вы должны проверять и именно для неё должны писать код. А здесь у вас плоская структура данных
+test_board = range(1, 10)
 
 
+# функция вывода на экран графического поля игры
 def draw_board(board):
     print("-------------")
     for i in range(3):
@@ -8,33 +13,39 @@ def draw_board(board):
         print("-------------")
 
 
-draw_board(board)
+draw_board(test_board)
 
 
+# FIXME: аннотировать и документировать функцию
 def take_input(player_token):
+    """Принимает параметр крестик или нолик """
     valid = False
     while not valid:
         player_answer = input("Выберите клетку " + player_token + "?")
         try:
             player_answer = int(player_answer)
+        # FIXME: уточните тип исключения
         except:
-            print: ("Вы точно ввели число?")
+            print("Вы точно ввели число?")
             continue
+        # FIXME: если не сами не помните, как оформлять код, то хотя бы к PyCharm присматривайтесь — он ерунды не предложит. Alt+Enter на подчёркнутой строке открывает меню с вариантами контекстно-зависимых действий
         if player_answer >= 1 and player_answer <= 9:
-            if (str(board[player_answer - 1]) not in "XO"):
-                board[player_answer - 1] = player_token
+            if (str(test_board[player_answer - 1]) not in "XO"):
+                # FIXME: действительно, как вы в объект range присваивать собрались? хоть бы в список преобразовали
+                #        и ещё напоминаю, что этот объект находится в глобальном пространстве имён
+                test_board[player_answer - 1] = player_token
                 valid = True
             else:
                 print("Клетка занята")
         else:
-            print("Неккоретный ввод. Введите число от 1 до 9 что бы сделать ход")
+            print("Некорректный ввод. Введите число от 1 до 9 что бы сделать ход")
 
 
+# FIXME: аннотировать и документировать функцию
 def check_win(board):
-    win_coord = ((0, 1, 2), (3, 4, 5), (6, 7, 8), (0, 3, 6), (1, 4, 7), (2, 5, 8), (0, 4, 8), (2, 4, 6))
+    win_coord = ((0, 1, 2), (3, 4, 5), (6, 7, 8), (0, 3, 6),
+                 (1, 4, 7), (2, 5, 8), (0, 4, 8), (2, 4, 6))
     for each in win_coord:
         if board[each[0]] == board[each[1]] == board[each[2]]:
             return board[each[0]]
         return False
-
-
