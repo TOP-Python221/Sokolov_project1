@@ -1,6 +1,6 @@
 """Модуль отрисовки игрового поля, и непосредственно партии игры"""
 
-# FIXME: в Архитектуре у вас совсем другая структура данных для работы с полями, в виде матрицы — именно её вы должны проверять и именно для неё должны писать код. А здесь у вас плоская структура данных
+
 board = range(1, 10)
 
 
@@ -27,7 +27,7 @@ def take_input(player_token):
         except:
             print("Вы точно ввели число?")
             continue
-        if player_answer >= 1 and player_answer <= 9:
+        if 1 <= player_answer <= 9:
             if str(board[player_answer - 1]) not in "XO":
                 board[player_answer - 1] = player_token
                 valid = True
