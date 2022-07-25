@@ -164,7 +164,7 @@ while True:
             save_game()
         else:
             # 10. Внесение изменений в статистику игрока(-ов)
-            update_stats(result)
+            # update_stats(result)
 
     elif command in ('load', 'l'):
         if flag := load():
