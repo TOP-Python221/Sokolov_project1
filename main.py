@@ -18,7 +18,7 @@ DIM = 3
 BOARD = [[' ']*DIM for _ in range(DIM)]
 PLAYERS = ()
 
-HELP = """Раздел помощи:
+HELP = help.txt """Раздел помощи:
 ...
 ..."""
 
@@ -146,7 +146,12 @@ def bot_turn(difficulty_level: str):
 # начало отработки Этапов работы приложения согласно Архитектуре
 
 # 1. Загрузка файлов настроек
-if read_ini():
+if read_ini:
+    print(show_help())
+else:
+
+
+
     # 2. ЕСЛИ первый запуск приложения:
     #         вывод раздела помощи
     show_help()
