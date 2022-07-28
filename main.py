@@ -26,6 +26,13 @@ HELP = """Раздел помощи:
 # функции
 def read_ini() -> bool:
     """Читает конфигурационные файлы, сохраняет прочитанные данные в глобальные переменные статистики и сохранений и возвращает True если приложение запущено впервые, иначе False."""
+    STATS = open('players.ini','r')
+    SAVES = open('saves.ini','r')
+    if not players.ini:
+        return True
+    else:
+        return  False
+
     # players.ini -> STATS
     # saves.ini -> SAVES
     # if not players.ini:
@@ -36,7 +43,11 @@ def read_ini() -> bool:
 
 def show_help() -> None:
     """Выводит в stdout раздел помощи."""
-    print(HELP)
+    import help.txt
+    if read_ini():
+
+
+    print(help)
 
 
 def get_player_name() -> None:
