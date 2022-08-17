@@ -7,13 +7,8 @@ BOARD = [[' '] * gameset.DIM for _ in range(gameset.DIM)]
 
 
 
-def test_board(change=False):
-    global BOARD
-    if change:
-        BOARD[1][1] = 'X'
-    for row in BOARD:
-        print(*row)
-
+def human_turn():
+    """Запрос координат ячейки поля для текущего хода"""
 
 def game(zero_turn=False) -> tuple[dict, dict] | None:
     """Обрабатывает игровой процесс."""
